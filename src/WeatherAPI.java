@@ -1,7 +1,7 @@
 public class WeatherAPI {
-    private WeatherNetworking networker;
+    private WeatherNetworkingClient networker;
 
     public WeatherAPI(){
-        this.networker = new WeatherNetworking();
+        this.networker = new WeatherNetworkingClient();
     }
 }

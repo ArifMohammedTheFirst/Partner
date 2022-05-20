@@ -34,10 +34,19 @@ public class WeatherNetworkingClient {
         }
     }
 
-    public void parseCurrent(String json){
+    public Weather parseCurrent(String json){
 
         JSONObject jsonObj = new JSONObject(json);
+        JSONObject currentObj = jsonObj.getJSONObject("current");
+        double tempF = currentObj.getDouble("temp_f");
+        double tempC = currentObj.getDouble("temp_c");
+        JSONObject conditionObj = currentObj.getJSONObject("condition");
+        String url = conditionObj.getString("icon");
+        String conD = conditionObj.getString("text");
+        url = "https:" + url;
 
+        Weather weather = new Weather(tempC, tempF, url, conD);
+        return weather;
     }
 }
 
